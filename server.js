@@ -7,6 +7,8 @@ const app = express();
 
 app.use(bodyParser.json());
 app.use(cors())
+//THIS VARIABLE IS ENVIRONMENTAL, IT IS INITIALIZED IN BASH.
+const PORT = process.env.port || 3000;
 
 const db = knex({
     client: 'pg',
@@ -94,8 +96,8 @@ const testObj = {
 }
 
 
-app.listen(3000, () =>{
-    console.log('app is running on port 3000');
+app.listen(PORT || 3000, () =>{
+    console.log(`app is running on port ${PORT}`);
 })
 
 
