@@ -13,14 +13,15 @@ const PORT = process.env.PORT || 3000;
 const db = knex({
     client: 'pg',
     connection: {
-      host : '127.0.0.1', //this is the ip of the localhost
+      host : '127.0.0.1' || process.env.HOSTNAME, //this is the ip of the localhost
       port : 5432,
-      user : 'postgres',
-      password : 'test',
-      database : 'galleryproj'
+      user : 'postgres' || process.env.USER,
+      password : 'test' || process.env.PASSWORD,
+      database : 'galleryproj' || process.env.DATABASE_NAME
     }
   });
 
+//   postgresql://onlinegenerateddesigndatabase_user:6ZOo0XsuTB3nvcCAdNr8XL11a4Pi4hOS@dpg-cjtprj95mpss739vapu0-a.oregon-postgres.render.com/onlinegenerateddesigndatabase
 
 const defaultObj = {
     Height: ['0', '100'],
