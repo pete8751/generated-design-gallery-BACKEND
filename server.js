@@ -23,15 +23,15 @@ const db = knex({
 
 //   postgresql://onlinegenerateddesigndatabase_user:6ZOo0XsuTB3nvcCAdNr8XL11a4Pi4hOS@dpg-cjtprj95mpss739vapu0-a.oregon-postgres.render.com/onlinegenerateddesigndatabase
 
-// const defaultObj = {
-//     Height: ['0', '100'],
-//     Price: ['0', '100000'],
-//     Search: "",
-//     Style: [],
-//     Width: ['0', '100'],
-//     isBundle: false,
-//     sortBy: "none"
-// }
+const defaultObj = {
+    Height: ['0', '100'],
+    Price: ['0', '100000'],
+    Search: "",
+    Style: [],
+    Width: ['0', '100'],
+    isBundle: false,
+    sortBy: "none"
+}
 
 app.get('/', (req, res) => {
     dbFilter(defaultObj.Price, defaultObj.Height, defaultObj.Width, defaultObj.Style, defaultObj.isBundle, defaultObj.Search, defaultObj.sortBy).then(result => {res.json(result)})
