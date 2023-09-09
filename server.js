@@ -32,14 +32,14 @@ const db = knex({
     connection: {
       host : process.env.HOSTNAME || '127.0.0.1', //this is the ip of the localhost
       port : 5432,
-      user : process.env.USER || 'postgres',
+      user : process.env.USERNAME || 'postgres',
       password : process.env.PASSWORD || 'test',
       database : process.env.DATABASE_NAME|| 'galleryproj'
     }
   });
 
 console.log(process.env.HOSTNAME)
-console.log(process.env.USER)
+console.log(process.env.USERNAME)
 console.log(process.env.PASSWORD)
 console.log(process.env.DATABASE_NAME)
 
