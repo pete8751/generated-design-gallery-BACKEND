@@ -94,7 +94,7 @@ function getImages(array){
 }
 
 
-app.post('/Product%20Closeup/Item.html', (req, res) => {
+app.post('/Item.html', (req, res) => {
     const imgid = req.body.imgid
 
     db.select('*').from('img').where('imgid', imgid)
