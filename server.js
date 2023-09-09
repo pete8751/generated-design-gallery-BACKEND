@@ -9,10 +9,10 @@ app.use(bodyParser.json());
 app.use(cors())
 //THIS VARIABLE IS ENVIRONMENTAL, IT IS INITIALIZED IN BASH.
 const PORT = process.env.PORT || 3000;
-const HOSTNAME = 'dpg-cjtprj95mpss739vapu0-a.oregon-postgres.render.com';
-const USER = 'onlinegenerateddesigndatabase_user';
-const PASSWORD = '6ZOo0XsuTB3nvcCAdNr8XL11a4Pi4Hos';
-const DATABASE_NAME = 'onlinegenerateddesigndatabase';
+// const HOSTNAME = 'dpg-cjtprj95mpss739vapu0-a.oregon-postgres.render.com';
+// const USER = 'onlinegenerateddesigndatabase_user';
+// const PASSWORD = '6ZOo0XsuTB3nvcCAdNr8XL11a4Pi4Hos';
+// const DATABASE_NAME = 'onlinegenerateddesigndatabase';
 
 const db = knex({
     client: 'pg',
