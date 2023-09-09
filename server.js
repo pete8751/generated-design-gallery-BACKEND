@@ -14,34 +14,34 @@ const PORT = process.env.PORT || 3000;
 // const PASSWORD = '6ZOo0XsuTB3nvcCAdNr8XL11a4Pi4Hos';
 // const DATABASE_NAME = 'onlinegenerateddesigndatabase';
 
-const db = knex({
-    client: 'pg',
-    connection: {
-      host : HOSTNAME, //this is the ip of the localhost
-      port : 5432,
-      user : USER,
-      password : PASSWORD,
-      database : DATABASE_NAME
-    }
-  });
-
-
-
 // const db = knex({
 //     client: 'pg',
 //     connection: {
-//       host : process.env.HOSTNAME || '127.0.0.1', //this is the ip of the localhost
+//       host : HOSTNAME, //this is the ip of the localhost
 //       port : 5432,
-//       user : process.env.USER || 'postgres',
-//       password : process.env.PASSWORD || 'test',
-//       database : process.env.DATABASE_NAME|| 'galleryproj'
+//       user : USER,
+//       password : PASSWORD,
+//       database : DATABASE_NAME
 //     }
 //   });
 
-// console.log(process.env.HOSTNAME)
-// console.log(process.env.USER)
-// console.log(process.env.PASSWORD)
-// console.log(process.env.DATABASE_NAME)
+
+
+const db = knex({
+    client: 'pg',
+    connection: {
+      host : process.env.HOSTNAME || '127.0.0.1', //this is the ip of the localhost
+      port : 5432,
+      user : process.env.USER || 'postgres',
+      password : process.env.PASSWORD || 'test',
+      database : process.env.DATABASE_NAME|| 'galleryproj'
+    }
+  });
+
+console.log(process.env.HOSTNAME)
+console.log(process.env.USER)
+console.log(process.env.PASSWORD)
+console.log(process.env.DATABASE_NAME)
 
 //   postgresql://onlinegenerateddesigndatabase_user:6ZOo0XsuTB3nvcCAdNr8XL11a4Pi4hOS@dpg-cjtprj95mpss739vapu0-a.oregon-postgres.render.com/onlinegenerateddesigndatabase
 
