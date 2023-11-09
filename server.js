@@ -39,10 +39,10 @@ const db = knex({
   });
 
 console.log(process.env.PORT);
-console.log(process.env.HOSTNAME)
-console.log(process.env.USERNAME)
-console.log(process.env.PASSWORD)
-console.log(process.env.DATABASE_NAME)
+console.log(process.env.HOSTNAME);
+console.log(process.env.USERNAME);
+console.log(process.env.PASSWORD);
+console.log(process.env.DATABASE_NAME);
 
 //   postgresql://onlinegenerateddesigndatabase_user:6ZOo0XsuTB3nvcCAdNr8XL11a4Pi4hOS@dpg-cjtprj95mpss739vapu0-a.oregon-postgres.render.com/onlinegenerateddesigndatabase
 
