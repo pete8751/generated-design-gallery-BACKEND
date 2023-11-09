@@ -38,6 +38,7 @@ const db = knex({
     }
   });
 
+console.log(process.env.PORT);
 console.log(process.env.HOSTNAME)
 console.log(process.env.USERNAME)
 console.log(process.env.PASSWORD)
