@@ -13,14 +13,14 @@ Frontend Repo: [https://github.com/pete8751/generated-design-gallery-BACKEND](ht
 
 Languages:
 
-Javascript
-SQL
+- Javascript
+- SQL
 
 Tools:
 
-PostgreSQL
-Render
-Postman
+- PostgreSQL
+- Render
+- Postman
 
 ===========================================================================
 
