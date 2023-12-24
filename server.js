@@ -25,46 +25,17 @@ const PORT = process.env.PORT || 3000;
 //     }
 //   });
 
-// The following is the credentials for my Heroku Database: 
-//Host
-// ec2-3-212-70-5.compute-1.amazonaws.com
-// Database
-// d4hp2tol0nsaoo
-// User
-// mctmmxhhrtynxt
-// Port
-// 5432
-// Password
-// 3ce70061e5c2ef467833d096acbf247f0999914703c7bd415bd7ec6b6e2b27c5
-// URI
-// postgres://mctmmxhhrtynxt:3ce70061e5c2ef467833d096acbf247f0999914703c7bd415bd7ec6b6e2b27c5@ec2-3-212-70-5.compute-1.amazonaws.com:5432/d4hp2tol0nsaoo
-// Heroku CLI
-// heroku pg:psql postgresql-parallel-18797 --app generateddesignserver
 
-//I will now connect to knex using the above credentials:
 const db = knex({
     client: 'pg',
     connection: {
-        host : 'ec2-3-212-70-5.compute-1.amazonaws.com', //this is the ip of the localhost
-        port : 5432,
-        user : 'mctmmxhhrtynxt',
-        password : '3ce70061e5c2ef467833d096acbf247f0999914703c7bd415bd7ec6b6e2b27c5',
-        database : 'd4hp2tol0nsaoo'
+      host : process.env.HOSTNAME || '127.0.0.1', //this is the ip of the localhost
+      port : 5432,
+      user : process.env.USERNAME || 'postgres',
+      password : process.env.PASSWORD || 'test',
+      database : process.env.DATABASE_NAME|| 'galleryproj'
     }
-});
-
-
-
-// const db = knex({
-//     client: 'pg',
-//     connection: {
-//       host : process.env.HOSTNAME || '127.0.0.1', //this is the ip of the localhost
-//       port : 5432,
-//       user : process.env.USERNAME || 'postgres',
-//       password : process.env.PASSWORD || 'test',
-//       database : process.env.DATABASE_NAME|| 'galleryproj'
-//     }
-//   });
+  });
 
 console.log(process.env.PORT);
 console.log(process.env.HOSTNAME);
