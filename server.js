@@ -9,38 +9,15 @@ app.use(bodyParser.json());
 app.use(cors())
 //THIS VARIABLE IS ENVIRONMENTAL, IT IS INITIALIZED IN BASH.
 const PORT = process.env.PORT || 3000;
-// const HOSTNAME = 'dpg-cjtprj95mpss739vapu0-a.oregon-postgres.render.com';
-// const USER = 'onlinegenerateddesigndatabase_user';
-// const PASSWORD = '6ZOo0XsuTB3nvcCAdNr8XL11a4Pi4Hos';
-// const DATABASE_NAME = 'onlinegenerateddesigndatabase';
-
-// Host
-// ec2-3-212-70-5.compute-1.amazonaws.com
-// Database
-// d4hp2tol0nsaoo
-// User
-// mctmmxhhrtynxt
-// Port
-// 5432
-// Password
-// 3ce70061e5c2ef467833d096acbf247f0999914703c7bd415bd7ec6b6e2b27c5
-// URI
-// postgres://mctmmxhhrtynxt:3ce70061e5c2ef467833d096acbf247f0999914703c7bd415bd7ec6b6e2b27c5@ec2-3-212-70-5.compute-1.amazonaws.com:5432/d4hp2tol0nsaoo
-// Heroku CLI
-// heroku pg:psql postgresql-parallel-18797 --app generateddesignserver
-
-const HOSTNAME = 'ec2-3-212-70-5.compute-1.amazonaws.com';
-const USER = 'mctmmxhhrtynxt';
-const PASSWORD = '3ce70061e5c2ef467833d096acbf247f0999914703c7bd415bd7ec6b6e2b27c5';
-const DATABASE_NAME = 'd4hp2tol0nsaoo';
-const URL = "postgres://mctmmxhhrtynxt:3ce70061e5c2ef467833d096acbf247f0999914703c7bd415bd7ec6b6e2b27c5@ec2-3-212-70-5.compute-1.amazonaws.com:5432/d4hp2tol0nsaoo";
 
 const db = knex({
     client: 'pg',
-    connection: process.env.DATABASE_URL || URL,
-    ssl: { rejectUnauthorized: false }, // Enable SSL
-  });
-
+    connection: {
+        connectionString: process.env.DATABASE_URL || URL,
+        searchPath: ['public'], // Optional: set the default schema
+        ssl: { rejectUnauthorized: false }, // Enable SSL
+    },
+});
 
 // const db = knex({
 //     client: 'pg',
@@ -53,11 +30,11 @@ const db = knex({
 //     }
 //   });
 
-console.log(process.env.PORT);
-console.log(process.env.HOSTNAME);
-console.log(process.env.USERNAME);
-console.log(process.env.PASSWORD);
-console.log(process.env.DATABASE_NAME);
+// console.log(process.env.PORT);
+// console.log(process.env.HOSTNAME);
+// console.log(process.env.USERNAME);
+// console.log(process.env.PASSWORD);
+// console.log(process.env.DATABASE_NAME);
 
 //   postgresql://onlinegenerateddesigndatabase_user:6ZOo0XsuTB3nvcCAdNr8XL11a4Pi4hOS@dpg-cjtprj95mpss739vapu0-a.oregon-postgres.render.com/onlinegenerateddesigndatabase
 
