@@ -13,11 +13,23 @@ const PORT = process.env.PORT || 3000;
 const db = knex({
     client: 'pg',
     connection: {
-        connectionString: process.env.DATABASE_URL || URL,
+        connectionString: 'postgres://mctmmxhhrtynxt:3ce70061e5c2ef467833d096acbf247f0999914703c7bd415bd7ec6b6e2b27c5@ec2-3-212-70-5.compute-1.amazonaws.com:5432/d4hp2tol0nsaoo',
         searchPath: ['public'], // Optional: set the default schema
         ssl: { rejectUnauthorized: false }, // Enable SSL
     },
 });
+
+// Attempt to connect to the database
+db.raw('SELECT 1')
+  .then(() => {
+    console.log('Connected to the database successfully');
+    // Add your code here to run after a successful connection
+    // For example, start your server or perform other tasks
+  })
+  .catch(error => {
+    console.error('Error connecting to the database:', error);
+    // Handle the error appropriately
+  });
 
 // const db = knex({
 //     client: 'pg',
@@ -47,9 +59,6 @@ const defaultObj = {
     isBundle: false,
     sortBy: "none"
 }
-
-dbFilter(defaultObj.Price, defaultObj.Height, defaultObj.Width, defaultObj.Style, defaultObj.isBundle, defaultObj.Search, defaultObj.sortBy).then(result => {console.log(json(result))})
-
 
 app.get('/', (req, res) => {
     dbFilter(defaultObj.Price, defaultObj.Height, defaultObj.Width, defaultObj.Style, defaultObj.isBundle, defaultObj.Search, defaultObj.sortBy).then(result => {res.json(result)})
