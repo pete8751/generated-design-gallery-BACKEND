@@ -14,28 +14,44 @@ const PORT = process.env.PORT || 3000;
 // const PASSWORD = '6ZOo0XsuTB3nvcCAdNr8XL11a4Pi4Hos';
 // const DATABASE_NAME = 'onlinegenerateddesigndatabase';
 
-// const db = knex({
-//     client: 'pg',
-//     connection: {
-//       host : HOSTNAME, //this is the ip of the localhost
-//       port : 5432,
-//       user : USER,
-//       password : PASSWORD,
-//       database : DATABASE_NAME
-//     }
-//   });
+// Host
+// ec2-3-212-70-5.compute-1.amazonaws.com
+// Database
+// d4hp2tol0nsaoo
+// User
+// mctmmxhhrtynxt
+// Port
+// 5432
+// Password
+// 3ce70061e5c2ef467833d096acbf247f0999914703c7bd415bd7ec6b6e2b27c5
+// URI
+// postgres://mctmmxhhrtynxt:3ce70061e5c2ef467833d096acbf247f0999914703c7bd415bd7ec6b6e2b27c5@ec2-3-212-70-5.compute-1.amazonaws.com:5432/d4hp2tol0nsaoo
+// Heroku CLI
+// heroku pg:psql postgresql-parallel-18797 --app generateddesignserver
 
+const HOSTNAME = 'ec2-3-212-70-5.compute-1.amazonaws.com';
+const USER = 'mctmmxhhrtynxt';
+const PASSWORD = '3ce70061e5c2ef467833d096acbf247f0999914703c7bd415bd7ec6b6e2b27c5';
+const DATABASE_NAME = 'd4hp2tol0nsaoo';
+const URL = "postgres://mctmmxhhrtynxt:3ce70061e5c2ef467833d096acbf247f0999914703c7bd415bd7ec6b6e2b27c5@ec2-3-212-70-5.compute-1.amazonaws.com:5432/d4hp2tol0nsaoo";
 
 const db = knex({
     client: 'pg',
-    connection: {
-      host : process.env.HOSTNAME || '127.0.0.1', //this is the ip of the localhost
-      port : 5432,
-      user : process.env.USERNAME || 'postgres',
-      password : process.env.PASSWORD || 'test',
-      database : process.env.DATABASE_NAME|| 'galleryproj'
-    }
+    connection: process.env.DATABASE_URL || URL,
+    ssl: { rejectUnauthorized: false }, // Enable SSL
   });
+
+
+// const db = knex({
+//     client: 'pg',
+//     connection: {
+//       host : process.env.HOSTNAME || '127.0.0.1', //this is the ip of the localhost
+//       port : 5432,
+//       user : process.env.USERNAME || 'postgres',
+//       password : process.env.PASSWORD || 'test',
+//       database : process.env.DATABASE_NAME|| 'galleryproj'
+//     }
+//   });
 
 console.log(process.env.PORT);
 console.log(process.env.HOSTNAME);
@@ -54,6 +70,9 @@ const defaultObj = {
     isBundle: false,
     sortBy: "none"
 }
+
+dbFilter(defaultObj.Price, defaultObj.Height, defaultObj.Width, defaultObj.Style, defaultObj.isBundle, defaultObj.Search, defaultObj.sortBy).then(result => {console.log(json(result))})
+
 
 app.get('/', (req, res) => {
     dbFilter(defaultObj.Price, defaultObj.Height, defaultObj.Width, defaultObj.Style, defaultObj.isBundle, defaultObj.Search, defaultObj.sortBy).then(result => {res.json(result)})
