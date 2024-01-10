@@ -5,8 +5,11 @@ import cors from 'cors'
 
 const app = express();
 
+app.use(cors({
+    origin: 'http://127.0.0.1:5500', // Replace with your allowed origin
+    optionsSuccessStatus: 200, // Some legacy browsers (IE11, various SmartTVs) choke on 204
+  }));
 app.use(bodyParser.json());
-app.use(cors());
 //THIS VARIABLE IS ENVIRONMENTAL, IT IS INITIALIZED IN BASH.
 const PORT = process.env.PORT || 3000;
 
