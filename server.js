@@ -6,7 +6,11 @@ import cors from 'cors'
 const app = express();
 
 app.use(bodyParser.json());
-app.use(cors())
+app.use(cors({
+    origin: 'https://pete8751.github.io',  // Replace with your actual frontend origin
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true,  // If your frontend sends credentials (like cookies)
+  }));
 //THIS VARIABLE IS ENVIRONMENTAL, IT IS INITIALIZED IN BASH.
 const PORT = process.env.PORT || 3000;
 
@@ -51,12 +55,12 @@ db.raw('SELECT 1')
 //   postgresql://onlinegenerateddesigndatabase_user:6ZOo0XsuTB3nvcCAdNr8XL11a4Pi4hOS@dpg-cjtprj95mpss739vapu0-a.oregon-postgres.render.com/onlinegenerateddesigndatabase
 
 // Enable CORS for all routes
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', 'https://pete8751.github.io');
-  res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-  next();
-});
+// app.use((req, res, next) => {
+//   res.header('Access-Control-Allow-Origin', 'https://pete8751.github.io');
+//   res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+//   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+//   next();
+// });
 
 const defaultObj = {
     Height: ['0', '100'],
