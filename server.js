@@ -6,8 +6,8 @@ import cors from 'cors'
 const app = express();
 
 app.use(cors());
-app.options('*', cors());
 // app.options('*', cors());
+
 app.use(bodyParser.json());
 //THIS VARIABLE IS ENVIRONMENTAL, IT IS INITIALIZED IN BASH.
 const PORT = process.env.PORT || 3000;
@@ -115,7 +115,7 @@ app.post('/item', (req, res) => {
     db.select('*').from('img').where('imgid', imgid)
     .then(result => {
         if (result[0].isbundle) {
-            db.select('*').from('img').where('bundleid', result[0].bundleid)
+            db.select('*').from('img').where('bundlenum', result[0].bundlenum)
             .then(result1 => {res.json(result1)})
         } else {
             res.json(result[0])
