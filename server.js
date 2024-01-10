@@ -6,11 +6,7 @@ import cors from 'cors'
 const app = express();
 
 app.use(bodyParser.json());
-app.use(cors({
-    origin: 'https://pete8751.github.io',  // Replace with your actual frontend origin
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    credentials: true,  // If your frontend sends credentials (like cookies)
-  }));
+app.use(cors());
 //THIS VARIABLE IS ENVIRONMENTAL, IT IS INITIALIZED IN BASH.
 const PORT = process.env.PORT || 3000;
 
