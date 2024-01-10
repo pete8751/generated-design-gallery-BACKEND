@@ -13,7 +13,7 @@ const PORT = process.env.PORT || 3000;
 const db = knex({
     client: 'pg',
     connection: {
-        connectionString: 'postgres://mctmmxhhrtynxt:3ce70061e5c2ef467833d096acbf247f0999914703c7bd415bd7ec6b6e2b27c5@ec2-3-212-70-5.compute-1.amazonaws.com:5432/d4hp2tol0nsaoo',
+        connectionString: process.env.DATABASE_URL,
         searchPath: ['public'], // Optional: set the default schema
         ssl: { rejectUnauthorized: false }, // Enable SSL
     },
