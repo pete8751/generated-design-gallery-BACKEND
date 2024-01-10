@@ -5,10 +5,8 @@ import cors from 'cors'
 
 const app = express();
 
-app.use(cors({
-    origin: 'http://127.0.0.1:5500', // Replace with your allowed origin
-    optionsSuccessStatus: 200, // Some legacy browsers (IE11, various SmartTVs) choke on 204
-  }));
+app.use(cors());
+// app.options('*', cors());
 app.use(bodyParser.json());
 //THIS VARIABLE IS ENVIRONMENTAL, IT IS INITIALIZED IN BASH.
 const PORT = process.env.PORT || 3000;
@@ -79,7 +77,7 @@ app.post('/', (req, res) => {
     const body = req.body;
     dbFilter(body.Price, body.Height, body.Width, body.Style, body.isBundle, body.Search, body.sortBy).then(result => {res.json(result)})
 })
-
+app.options('/item', cors());
 app.post('/cart', (req, res) => {
     const cart = req.body.carted
     console.log(typeof(cart[0]))
