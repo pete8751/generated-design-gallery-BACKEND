@@ -6,6 +6,7 @@ import cors from 'cors'
 const app = express();
 
 app.use(cors());
+app.options('*', cors());
 // app.options('*', cors());
 app.use(bodyParser.json());
 //THIS VARIABLE IS ENVIRONMENTAL, IT IS INITIALIZED IN BASH.
@@ -77,7 +78,7 @@ app.post('/', (req, res) => {
     const body = req.body;
     dbFilter(body.Price, body.Height, body.Width, body.Style, body.isBundle, body.Search, body.sortBy).then(result => {res.json(result)})
 })
-app.options('/item', cors());
+
 app.post('/cart', (req, res) => {
     const cart = req.body.carted
     console.log(typeof(cart[0]))
